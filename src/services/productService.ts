@@ -37,6 +37,17 @@ const productService = {
 
     return response.status;
   },
+  updateProduct: async (
+    schema: ProductType,
+  ): Promise<[number, ProductType]> => {
+    const response = await fetch(apiConfig.base_url, {
+      method: "UPDATE",
+      headers: apiConfig.header_setting,
+      body: JSON.stringify(schema),
+    });
+
+    return [response.status, (await response.json()).data as ProductType];
+  },
 };
 
 export default productService;

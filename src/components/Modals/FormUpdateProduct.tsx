@@ -14,9 +14,15 @@ import {
 } from "@mui/material";
 import productService from "@service/productService";
 import { useRouter } from "next/navigation";
-import { Fragment, SyntheticEvent, useState } from "react";
+import { Fragment, SyntheticEvent, useEffect, useState } from "react";
 
-const FormAddProduct = () => {
+const FormUpdateProduct = (props: {
+  id: number | string | undefined;
+  title: string | null;
+  description: string | null;
+  price: string | null;
+  author: string | null;
+}) => {
   const { show, handleShowModal } = useShowModal();
   const { show: showSnackBar, handleShowModal: handleSnackbar } =
     useShowModal();
@@ -46,6 +52,13 @@ const FormAddProduct = () => {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
+
+  useEffect(() => {
+    setTitle(props.title);
+    setDesc(props.description);
+    setPrice(props.price);
+    setAuthor(props.author);
+  }, []);
 
   const resetInput = () => {
     setTitle(null);
@@ -100,24 +113,18 @@ const FormAddProduct = () => {
         onClose={handleSnackbar}
       >
         <Alert severity="success" onClose={handleSnackbar}>
-          Data added successfully
+          Data updated successfully
         </Alert>
       </Snackbar>
 
-      <Button
-        variant="contained"
-        size="medium"
-        color="info"
-        onClick={handleShowModal}
-        style={{ marginTop: 10 }}
-      >
-        Add Product
+      <Button variant="outlined" color="warning" onClick={handleShowModal}>
+        Edit
       </Button>
 
       <Modal open={show} onClose={handleShowModal}>
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add New Product
+            Update Product
           </Typography>
 
           {isError && <Alert severity="error">Error: {status}</Alert>}
@@ -179,7 +186,7 @@ const FormAddProduct = () => {
               <Grid item>
                 <Button
                   variant="text"
-                  color="info"
+                  color="warning"
                   onClick={handleShowModal}
                   disabled={loading}
                 >
@@ -188,7 +195,7 @@ const FormAddProduct = () => {
               </Grid>
               <Grid item>
                 <Button
-                  color="info"
+                  color="warning"
                   variant="contained"
                   type="submit"
                   disabled={loading}
@@ -204,4 +211,4 @@ const FormAddProduct = () => {
   );
 };
 
-export default FormAddProduct;
+export default FormUpdateProduct;

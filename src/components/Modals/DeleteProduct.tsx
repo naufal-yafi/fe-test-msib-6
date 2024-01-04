@@ -80,8 +80,11 @@ const DeleteProduct = (props: {
 
       <Modal open={show} onClose={handleShowModal}>
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Are you sure you want to remove {props.nameProduct}?
+          <Typography variant="h6" fontWeight="500" component="h2">
+            Are you sure you want to delete
+          </Typography>
+          <Typography variant="h6" component="h2">
+            &quot;{props.nameProduct}&quot;
           </Typography>
 
           {isError && <Alert severity="error">Error: {status}</Alert>}
@@ -100,7 +103,7 @@ const DeleteProduct = (props: {
                 onClick={handleSubmitDeleteProduct}
                 disabled={loading}
               >
-                Yes
+                Delete
               </Button>
             </Grid>
             <Grid item>
@@ -110,7 +113,7 @@ const DeleteProduct = (props: {
                 disabled={loading}
                 onClick={handleShowModal}
               >
-                No
+                Cancel
               </Button>
             </Grid>
           </Grid>

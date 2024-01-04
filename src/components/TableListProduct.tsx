@@ -1,6 +1,6 @@
 import FormAddProduct from "@modal/FormAddProduct";
+import FormUpdateProduct from "@modal/FormUpdateProduct";
 import {
-  Button,
   Divider,
   Link,
   Table,
@@ -61,9 +61,13 @@ const TableListProduct = async () => {
                         id={product.id}
                         nameProduct={product.title}
                       />
-                      <Button variant="outlined" color="warning">
-                        Edit
-                      </Button>
+                      <FormUpdateProduct
+                        id={product.id}
+                        title={product.title}
+                        description={product.description}
+                        price={`${product.price}`}
+                        author={product.author}
+                      />
                     </TableCell>
                   </TableRow>
                 ))}
