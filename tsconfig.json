@@ -20,6 +20,8 @@
     ],
     "paths": {
       "@config/*": ["./src/configs/*"],
+      "@service/*": ["./src/services/*"],
+      "@type/*": ["./src/types/*"],
       "@/*": ["./src/*"]
     }
   },
