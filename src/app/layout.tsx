@@ -1,3 +1,4 @@
+import Footer from "@component/Footer";
 import DarkModeProvider from "@config/DarkModeProvider";
 import type { Metadata } from "next";
 
@@ -15,6 +16,7 @@ const RootLayout = ({
     <html lang="en">
       <body>
         <DarkModeProvider>{children}</DarkModeProvider>
+        <Footer />
       </body>
     </html>
   );

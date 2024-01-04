@@ -1,6 +1,7 @@
-import ModalFormAddProduct from "@modal/FormAddProduct";
+import FormAddProduct from "@modal/FormAddProduct";
 import {
   Button,
+  Divider,
   Table,
   TableBody,
   TableCell,
@@ -17,10 +18,11 @@ const TableListProduct = async () => {
 
   return (
     <Fragment>
-      <ModalFormAddProduct />
+      <FormAddProduct />
 
-      <TableContainer>
-        <Table>
+      <Divider style={{ marginTop: 20 }} />
+      <TableContainer sx={{ maxHeight: 440 }}>
+        <Table stickyHeader>
           <TableHead>
             <TableRow>
               <TableCell>Name Product</TableCell>

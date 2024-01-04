@@ -2,7 +2,6 @@
 
 import useInput from "@hook/useInput";
 import useShowModal from "@hook/useShowModal";
-import AddIcon from "@mui/icons-material/Add";
 import {
   Alert,
   Box,
@@ -17,7 +16,7 @@ import productService from "@service/productService";
 import { useRouter } from "next/navigation";
 import { Fragment, SyntheticEvent, useState } from "react";
 
-export default function ModalFormAddProduct() {
+const FormAddProduct = () => {
   const { show, handleShowModal } = useShowModal();
   const { show: showSnackBar, handleShowModal: handleSnackbar } =
     useShowModal();
@@ -109,8 +108,8 @@ export default function ModalFormAddProduct() {
         variant="contained"
         size="medium"
         color="info"
-        startIcon={<AddIcon />}
         onClick={handleShowModal}
+        style={{ marginTop: 10 }}
       >
         Add Product
       </Button>
@@ -202,4 +201,6 @@ export default function ModalFormAddProduct() {
       </Modal>
     </Fragment>
   );
-}
+};
+
+export default FormAddProduct;
