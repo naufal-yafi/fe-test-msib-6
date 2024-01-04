@@ -121,6 +121,7 @@ const FormAddProduct = () => {
           </Typography>
 
           {isError && <Alert severity="error">Error: {status}</Alert>}
+          {loading && <Alert severity="info">Loading... Please Wait</Alert>}
 
           <form onSubmit={handleSubmit}>
             <TextField

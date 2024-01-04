@@ -11,7 +11,7 @@ const productService = {
 
     return (await response.json()).data as ProductType[];
   },
-  getByID: async (id: string): Promise<ProductType> => {
+  getByID: async (id: string | number): Promise<ProductType> => {
     const response = await fetch(`${apiConfig.base_url}/${id}`, {
       method: "GET",
       cache: "no-store",
@@ -28,6 +28,14 @@ const productService = {
     });
 
     return [response.status, (await response.json()).data as ProductType];
+  },
+  deleteProduct: async (id: string | number | undefined): Promise<number> => {
+    const response = await fetch(`${apiConfig.base_url}/${id}`, {
+      method: "DELETE",
+      headers: apiConfig.header_setting,
+    });
+
+    return response.status;
   },
 };
 

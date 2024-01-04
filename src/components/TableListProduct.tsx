@@ -2,6 +2,7 @@ import FormAddProduct from "@modal/FormAddProduct";
 import {
   Button,
   Divider,
+  Link,
   Table,
   TableBody,
   TableCell,
@@ -12,9 +13,12 @@ import {
 import productService from "@service/productService";
 import ProductType from "@type/product.type";
 import { Fragment } from "react";
+import DeleteProduct from "./Modals/DeleteProduct";
 
 const TableListProduct = async () => {
   const products: ProductType[] = await productService.getAll();
+
+  const COUNT_PRODUCT = products.length;
 
   return (
     <Fragment>
@@ -34,18 +38,37 @@ const TableListProduct = async () => {
           </TableHead>
 
           <TableBody>
-            {products?.map((product: ProductType) => (
-              <TableRow key={product.id} hover>
-                <TableCell>{product.title}</TableCell>
-                <TableCell>{product.description}</TableCell>
-                <TableCell>{product.price}</TableCell>
-                <TableCell>{product.author}</TableCell>
-                <TableCell>
-                  <Button>Delete</Button>
-                  <Button>Edit</Button>
+            {COUNT_PRODUCT === 0 ? (
+              <TableRow>
+                <TableCell colSpan={5} align="center">
+                  Product data is empty, let&apos;s create a new one...
                 </TableCell>
               </TableRow>
-            ))}
+            ) : (
+              <>
+                {products?.map((product: ProductType) => (
+                  <TableRow key={product.id} hover>
+                    <TableCell>
+                      <Link href={`/product/${product.id}`}>
+                        {product.title}
+                      </Link>
+                    </TableCell>
+                    <TableCell>{product.description}</TableCell>
+                    <TableCell>{product.price}</TableCell>
+                    <TableCell>{product.author}</TableCell>
+                    <TableCell>
+                      <DeleteProduct
+                        id={product.id}
+                        nameProduct={product.title}
+                      />
+                      <Button variant="outlined" color="warning">
+                        Edit
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </>
+            )}
           </TableBody>
         </Table>
       </TableContainer>
