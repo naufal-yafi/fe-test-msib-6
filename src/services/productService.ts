@@ -38,9 +38,10 @@ const productService = {
     return response.status;
   },
   updateProduct: async (
+    id: string | number | undefined,
     schema: ProductType,
   ): Promise<[number, ProductType]> => {
-    const response = await fetch(apiConfig.base_url, {
+    const response = await fetch(`${apiConfig.base_url}/${id}`, {
       method: "PUT",
       headers: apiConfig.header_setting,
       body: JSON.stringify(schema),

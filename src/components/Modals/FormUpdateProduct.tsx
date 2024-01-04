@@ -73,14 +73,14 @@ const FormUpdateProduct = (props: {
 
     setLoading(true);
 
-    const response = await productService.addProduct({
+    const response = await productService.updateProduct(props.id, {
       title: titleValue,
       description: descValue,
       price: Number(priceValue),
       author: authorValue,
     });
 
-    if (response[0] === 201) {
+    if (response[0] === 200) {
       setLoading(false);
       resetInput();
       router.refresh();
