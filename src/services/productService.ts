@@ -20,6 +20,15 @@ const productService = {
 
     return (await response.json()).data as ProductType;
   },
+  addProduct: async (schema: ProductType): Promise<[number, ProductType]> => {
+    const response = await fetch(apiConfig.base_url, {
+      method: "POST",
+      headers: apiConfig.header_setting,
+      body: JSON.stringify(schema),
+    });
+
+    return [response.status, (await response.json()).data as ProductType];
+  },
 };
 
 export default productService;

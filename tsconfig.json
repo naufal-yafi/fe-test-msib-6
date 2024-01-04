@@ -19,7 +19,10 @@
       }
     ],
     "paths": {
+      "@component/*": ["./src/components/*"],
+      "@modal/*": ["./src/components/Modals/*"],
       "@config/*": ["./src/configs/*"],
+      "@hook/*": ["./src/hooks/*"],
       "@service/*": ["./src/services/*"],
       "@type/*": ["./src/types/*"],
       "@/*": ["./src/*"]
