@@ -1,11 +1,7 @@
-import { Container, Typography } from "@mui/material";
+import ListProduct from "./product/page";
 
 const Home = () => {
-  return (
-    <Container>
-      <Typography variant="h1">Hi</Typography>
-    </Container>
-  );
+  return <ListProduct />;
 };
 
 export default Home;

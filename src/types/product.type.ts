@@ -1,4 +1,4 @@
-type ProductType = () => {
+type ProductType = {
   id?: number | string;
   title: string;
   description: string;
