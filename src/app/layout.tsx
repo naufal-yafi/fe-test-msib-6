@@ -1,3 +1,4 @@
+import DarkModeProvider from "@config/DarkModeProvider";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,7 +13,9 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <DarkModeProvider>{children}</DarkModeProvider>
+      </body>
     </html>
   );
 };
