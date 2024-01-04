@@ -27,7 +27,7 @@ const TableListProduct = async () => {
         </TableHead>
 
         <TableBody>
-          {products?.data?.map((product: ProductType) => (
+          {products?.map((product: ProductType) => (
             <TableRow key={product.id} hover>
               <TableCell>{product.title}</TableCell>
               <TableCell>{product.description}</TableCell>
