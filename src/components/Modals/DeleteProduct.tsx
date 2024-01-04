@@ -13,6 +13,7 @@ import {
 import productService from "@service/productService";
 import { useRouter } from "next/navigation";
 import { Fragment, useState } from "react";
+import styleModals from "./styleModals";
 
 const DeleteProduct = (props: {
   id: number | string | undefined;
@@ -44,19 +45,6 @@ const DeleteProduct = (props: {
     }
   };
 
-  const style = {
-    position: "absolute",
-    borderRadius: ".8rem",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
-
   return (
     <Fragment>
       <Snackbar
@@ -72,14 +60,14 @@ const DeleteProduct = (props: {
       <Button
         variant="text"
         color="error"
-        style={{ marginRight: 8 }}
+        sx={{ mr: 2 }}
         onClick={handleShowModal}
       >
         Delete
       </Button>
 
       <Modal open={show} onClose={handleShowModal}>
-        <Box sx={style}>
+        <Box sx={styleModals.boxStyle}>
           <Typography variant="h6" fontWeight="500" component="h2">
             Are you sure you want to delete
           </Typography>
@@ -90,12 +78,7 @@ const DeleteProduct = (props: {
           {isError && <Alert severity="error">Error: {status}</Alert>}
           {loading && <Alert severity="info">Loading... Please Wait</Alert>}
 
-          <Grid
-            spacing={2}
-            alignItems="end"
-            style={{ marginTop: 20 }}
-            container
-          >
+          <Grid spacing={2} alignItems="end" sx={{ mt: 2 }} container>
             <Grid item>
               <Button
                 variant="text"

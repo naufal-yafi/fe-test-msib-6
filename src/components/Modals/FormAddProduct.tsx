@@ -15,6 +15,7 @@ import {
 import productService from "@service/productService";
 import { useRouter } from "next/navigation";
 import { Fragment, SyntheticEvent, useState } from "react";
+import styleModals from "./styleModals";
 
 const FormAddProduct = () => {
   const { show, handleShowModal } = useShowModal();
@@ -79,19 +80,6 @@ const FormAddProduct = () => {
     }
   };
 
-  const style = {
-    position: "absolute",
-    borderRadius: ".8rem",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
-
   return (
     <Fragment>
       <Snackbar
@@ -109,13 +97,13 @@ const FormAddProduct = () => {
         size="medium"
         color="info"
         onClick={handleShowModal}
-        style={{ marginTop: 10 }}
+        sx={{ mt: 2 }}
       >
         Add Product
       </Button>
 
       <Modal open={show} onClose={handleShowModal}>
-        <Box sx={style}>
+        <Box sx={styleModals.boxStyle}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Add New Product
           </Typography>
@@ -131,7 +119,7 @@ const FormAddProduct = () => {
               size="small"
               value={titleValue}
               onChange={handleTitle}
-              style={{ width: "100%", marginTop: 15 }}
+              sx={styleModals.typographyStyle}
               required
             />
 
@@ -142,7 +130,7 @@ const FormAddProduct = () => {
               size="small"
               value={descValue}
               onChange={handleDesc}
-              style={{ width: "100%", marginTop: 15 }}
+              sx={styleModals.typographyStyle}
               multiline
               required
             />
@@ -155,7 +143,7 @@ const FormAddProduct = () => {
               type="number"
               value={priceValue}
               onChange={handlePrice}
-              style={{ width: "100%", marginTop: 15 }}
+              sx={styleModals.typographyStyle}
               required
             />
 
@@ -166,16 +154,11 @@ const FormAddProduct = () => {
               size="small"
               value={authorValue}
               onChange={handleAuthor}
-              style={{ width: "100%", marginTop: 15 }}
+              sx={styleModals.typographyStyle}
               required
             />
 
-            <Grid
-              spacing={2}
-              alignItems="end"
-              style={{ marginTop: 20 }}
-              container
-            >
+            <Grid spacing={2} alignItems="end" sx={{ mt: 3 }} container>
               <Grid item>
                 <Button
                   variant="text"

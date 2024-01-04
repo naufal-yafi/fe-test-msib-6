@@ -41,7 +41,7 @@ const productService = {
     schema: ProductType,
   ): Promise<[number, ProductType]> => {
     const response = await fetch(apiConfig.base_url, {
-      method: "UPDATE",
+      method: "PUT",
       headers: apiConfig.header_setting,
       body: JSON.stringify(schema),
     });

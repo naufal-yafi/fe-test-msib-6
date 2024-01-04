@@ -3,7 +3,7 @@ import { Container, Link, Typography } from "@mui/material";
 const Footer = () => {
   return (
     <footer>
-      <Container style={{ paddingTop: 35, paddingBottom: 45 }}>
+      <Container sx={{ paddingTop: 10, paddingBottom: 8 }}>
         <Typography align="center">
           Created by{" "}
           <Link

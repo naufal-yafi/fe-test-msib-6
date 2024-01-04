@@ -24,7 +24,7 @@ const TableListProduct = async () => {
     <Fragment>
       <FormAddProduct />
 
-      <Divider style={{ marginTop: 20 }} />
+      <Divider sx={{ mt: 5 }} />
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader>
           <TableHead>
